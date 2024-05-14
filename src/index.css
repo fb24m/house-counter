@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: #222;
-  color: #ddd;
-}
-
 @font-face {
   font-family: "House MD";
   src: url("/house_md.ttf") format("truetype");
