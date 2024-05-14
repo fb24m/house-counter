@@ -1,8 +1,8 @@
 import episodes from './episodes.json'
 
-function remainEvents(startDate, events) {
+function remainEvents<T,>(startDate: Date, events: Array<T>) {
   const today = new Date() // Текущая дата
-  const result = [];
+  const result: any = []
 
   // Предполагаем, что каждый день происходит два события
   const eventsPerDay = 2;
@@ -22,7 +22,7 @@ function remainEvents(startDate, events) {
     }
   });
 
-  return result.filter(day => day && day.events.length > 0); // Отфильтровать пустые дни
+  return result.filter((day: any) => day && day.events.length > 0); // Отфильтровать пустые дни
 }
 
 function App() {
@@ -33,11 +33,11 @@ function App() {
     <div className="bg-gray-900 flex items-center justify-center bg-opacity-50 p-4 h-[100vh]">
       <div className="flex max-w-[720px] flex-col-reverse md:flex-row justify-center items-center p-8 gap-6 bg-gray-900 bg-opacity-50 rounded-3xl">
         <div className="inline-grid grid-cols-6 gap-1">
-          {remainEvents(new Date(2024, 3, 30), episodes.episodes).map((day) =>
+          {remainEvents(new Date(2024, 3, 30), episodes.episodes).map((day: any) =>
             <div className="group relative inline-block p-2 px-2 rounded-xl text-sm bg-gray-800 text-gray-300">
               {day.date.getDate() <= 9 ? '0' + day.date.getDate() : day.date.getDate()}.{day.date.getMonth() <= 9 ? '0' + day.date.getMonth() : day.date.getMonth()}
               <div className="shadow-lg left-0 top-full w-[300px] rounded-xl pointer-events-none z-50 absolute bg-gray-800 -translate-y-2 group-hover:translate-y-2 opacity-0 group-hover:opacity-100 p-2 flex flex-col transition-all duration-300">
-                {day.events.map((event) =>
+                {day.events.map((event: any) =>
                   <div key={JSON.stringify(event)} className="p-1 px-2 rounded-lg">
                     <div className="flex justify-between"><span>{event.name}</span> <span className="text-gray-400">{event.season}.{event.episode_number}</span> </div>
                     <span className="text-gray-400 text-xs block">({event.date})</span>
