@@ -1,4 +1,4 @@
-import { Button, Card, CssVarsProvider, getInitColorSchemeScript } from '@mui/joy';
+import { Button, Card, CssVarsProvider } from '@mui/joy'
 import episodes from './episodes.json'
 
 function remainEvents<T,>(startDate: Date, events: Array<T>) {
@@ -27,11 +27,6 @@ function remainEvents<T,>(startDate: Date, events: Array<T>) {
 }
 
 function App() {
-
-  console.log(remainEvents(new Date(2024, 3, 12), episodes.episodes))
-
-  console.log(getInitColorSchemeScript())
-
   return (
     <div className="bg-[rgb(11,13,14)]">
       <CssVarsProvider defaultMode="dark" defaultColorScheme="dark" modeStorageKey="dark">
@@ -39,9 +34,9 @@ function App() {
           <Card variant="outlined" className="max-w-[720px] p-8" >
             <div className="flex flex-col-reverse md:flex-row justify-center gap-6 items-center">
               <div className="inline-grid grid-cols-6 gap-1">
-                {remainEvents(new Date(2024, 3, 30), episodes.episodes).map((day: any) =>
+                {remainEvents(new Date(2024, 3, 28), episodes.episodes).map((day: any) =>
                   <Button variant="soft" className="group relative inline-block p-2 px-2 rounded-xl text-sm bg-gray-800 text-gray-300">
-                    {day.date.getDate() <= 9 ? '0' + day.date.getDate() : day.date.getDate()}.{day.date.getMonth() <= 9 ? '0' + day.date.getMonth() : day.date.getMonth()}
+                    {+day.date.getDate() + 1 <= 9 ? '0' + (day.date.getDate() - 1) : Number(day.date.getDate()) - 1}.{day.date.getMonth() <= 9 ? '0' + day.date.getMonth() : day.date.getMonth()}
                     <div className="absolute left-0 pointer-events-none top-full z-50">
                       <Card className="shadow-lg w-[300px] bg-gray-800 -translate-y-2 group-hover:translate-y-2 opacity-0 group-hover:opacity-100 flex flex-col transition-all duration-300">
                         {day.events.map((event: any) =>
@@ -56,7 +51,7 @@ function App() {
               </div>
               <div className="p-2">
                 <div className="font-house-md text-5xl">House1</div>
-                <div className="font-house-md text-xl mt-2 ml-1 [letter-spacing:-0.2em]">PROGRESS</div>
+                <div className="font-house-md text-xl mt-2 ml-1 [letter-spacing:-0.2em]">COUNTER</div>
               </div>
             </div>
           </Card>
