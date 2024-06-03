@@ -454,7 +454,8 @@
       "episode_number": 15,
       "season": 7,
       "date": "19 апреля 2011",
-      "name": "Гром среди ясного неба"
+      "name": "Гром среди ясного неба",
+      "no_intro": true
     },
     {
       "episode_number": 16,
