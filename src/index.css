@@ -6,6 +6,17 @@
   font-family: "House MD";
   src: url("/house_md.ttf") format("truetype");
 }
+@font-face {
+  font-family: "Sofia Pro";
+  src: url("/Sofia Pro Regular Az.otf") format("opentype");
+  font-weight: regular;
+}
+
+@font-face {
+  font-family: "Sofia Pro";
+  src: url("/Sofia Pro Light Az.otf") format("opentype");
+  font-weight: 300;
+}
 
 .font-house-md {
   font-family: "House MD";

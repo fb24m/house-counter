@@ -502,31 +502,36 @@
       "episode_number": 23,
       "season": 7,
       "date": "14 июня 2011",
-      "name": "Жизнь продолжается"
+      "name": "Жизнь продолжается",
+      "no_intro": true
     },
     {
       "episode_number": 1,
       "season": 8,
       "date": "10 января 2012",
-      "name": "Двадцать викодинок"
+      "name": "Двадцать викодинок",
+      "no_intro": true
     },
     {
       "episode_number": 2,
       "season": 8,
       "date": "17 января 2012",
-      "name": "Трансплантат"
+      "name": "Трансплантат",
+      "no_intro": true
     },
     {
       "episode_number": 3,
       "season": 8,
       "date": "24 января 2012",
-      "name": "Благотворительность"
+      "name": "Благотворительность",
+      "no_intro": true
     },
     {
       "episode_number": 4,
       "season": 8,
       "date": "31 января 2012",
-      "name": "Рискованный бизнес"
+      "name": "Рискованный бизнес",
+      "no_intro": true
     },
     {
       "episode_number": 5,
