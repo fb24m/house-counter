@@ -21,3 +21,11 @@
 .font-house-md {
   font-family: "House MD";
 }
+
+.static-btn {
+  position: static !important;
+}
+
+.MuiCard-root {
+  background-color: transparent !important;
+}
