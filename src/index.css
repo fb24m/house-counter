@@ -91,3 +91,24 @@
     opacity: 100%;
   }
 }
+
+.lisa-car {
+  width: 360px;
+  position: fixed;
+
+  animation-name: lisaCar;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes lisaCar {
+  0% {
+    right: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    right: 0;
+    transform: translateX(0);
+  }
+}

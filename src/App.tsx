@@ -31,25 +31,16 @@ function App() {
   const [isPjFirst, setIsPjFirst] = useState(true)
 
   const [isLisaHidden, setIsLisaHidden] = useState(false)
-  const [lisaTimer, setLisaTimer] = useState('5')
+  const [lisaCar, setLisaCar] = useState(<></>)
+  const [lisaTimer] = useState('')
 
-  const setLisaTimeout = () => {
-    setLisaTimer('5')
+  const hideLisa = () => {
+    setLisaCar(<img className="lisa-car" src="/Vintage_blue_car.png" />)
+
     setTimeout(() => {
-      setIsLisaHidden(false)
+      setIsLisaHidden(true)
+      setLisaCar(<></>)
     }, 5000)
-    setTimeout(() => {
-      setLisaTimer('4')
-    }, 1000)
-    setTimeout(() => {
-      setLisaTimer('3')
-    }, 2000)
-    setTimeout(() => {
-      setLisaTimer('2')
-    }, 3000)
-    setTimeout(() => {
-      setLisaTimer('1')
-    }, 4000)
   }
 
   const [endDate] = useState(new Date(2024, 5, 7))
@@ -64,6 +55,7 @@ function App() {
     <div className="bg-[#17212b]">
       <CssVarsProvider defaultMode="dark" defaultColorScheme="dark" modeStorageKey="dark">
         <div className="flex items-center flex-col gap-4 bg-opacity-50 py-4 h-[100vh]">
+          {lisaCar}
           {jailHouse &&
             <Card variant="outlined" className="max-w-[360px] relative overflow-hidden h-[240px] w-full" onClick={() => setIsHouseFree(true)}>
               <img className={`absolute left-0 top-0 bottom-0 right-0 object-cover w-full h-full`} src={!isHouseFree ? "/de4cc1a185152b54daf30bd044173ce20c377a853098ad4542da1d1eaad867b6._SX1080_FMjpg_.jpg" : "/free-house.png"} alt="" />
@@ -96,7 +88,7 @@ function App() {
             : !isNewIntroDate && <Card variant="outlined" className={`max-w-[360px] p-8 w-full`}>
               <div className="relative text-xl font-sofia-pro font-light">
                 <div className={`flex gap-4 items-center transition-all duration-700 ${isLisaHidden && 'blur-xl opacity-0'}`}>
-                  <Button onClick={() => { setIsLisaHidden(true); setLisaTimeout() }}>
+                  <Button onClick={() => { hideLisa() }}>
                     <span className="material-symbols-outlined">close</span>
                   </Button>
                   <span className="block w-full">Lisa Edelstein</span>
