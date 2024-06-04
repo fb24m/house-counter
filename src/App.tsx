@@ -1,6 +1,6 @@
 import { Button, Card, CssVarsProvider } from '@mui/joy'
-// import episodes from './episodes.json'
-import { useEffect, useState } from 'react';
+import house from './house.json'
+import { useState } from 'react'
 
 function remainEvents<T,>(startDate: Date, events: Array<T>) {
   const today = new Date() // Текущая дата
@@ -30,17 +30,8 @@ function remainEvents<T,>(startDate: Date, events: Array<T>) {
 function App() {
   const [isPjFirst, setIsPjFirst] = useState(true)
 
-  const [episodes, setEpisodes] = useState<any>(false)
-
   const params = new URLSearchParams(location.search)
 
-  useEffect(() => {
-    if (params.get('file') && params.get('file') !== null) {
-      import(params.get('file')!).then((data) => {
-        setEpisodes(data as any)
-      })
-    }
-  }, [])
   // const [isLisaHidden, setIsLisaHidden] = useState(false)
   // const [lisaTimer, setLisaTimer] = useState('5')
   // const [lisaDuration, setLisaDuration] = useState('duration-700')
@@ -63,21 +54,20 @@ function App() {
   //     setLisaTimer('1')
   //   }, 4000)
   // }
-  if (episodes)
-    return (
-      <div className="bg-[#17212b]">
-        <CssVarsProvider defaultMode="dark" defaultColorScheme="dark" modeStorageKey="dark">
-          <div className="flex items-center flex-col gap-4 bg-opacity-50 p-20 h-[100vh]">
-            <Card variant="outlined" className="max-w-[400px] p-8 w-full">
-              <div className="flex gap-4 items-center text-xl font-sofia-pro font-light">
-                <span>{isPjFirst ? 'Peter Jacobson' : 'Jesse Spencer'}</span>
-                <Button onClick={() => { setIsPjFirst(!isPjFirst) }}>
-                  <span className="material-symbols-outlined">swap_horiz</span>
-                </Button>
-                <span>{isPjFirst ? 'Jesse Spencer' : 'Peter Jacobson'}</span>
-              </div>
-            </Card>
-            {/* <Card variant="outlined" className={`max-w-[400px] p-8 w-full`}>
+  return (
+    <div className="bg-[#17212b]">
+      <CssVarsProvider defaultMode="dark" defaultColorScheme="dark" modeStorageKey="dark">
+        <div className="flex items-center flex-col gap-4 bg-opacity-50 p-20 h-[100vh]">
+          <Card variant="outlined" className="max-w-[400px] p-8 w-full">
+            <div className="flex gap-4 items-center justify-center text-xl font-sofia-pro font-light">
+              <span>{isPjFirst ? 'Peter Jacobson' : 'Jesse Spencer'}</span>
+              <Button onClick={() => { setIsPjFirst(!isPjFirst) }}>
+                <span className="material-symbols-outlined">swap_horiz</span>
+              </Button>
+              <span>{isPjFirst ? 'Jesse Spencer' : 'Peter Jacobson'}</span>
+            </div>
+          </Card>
+          {/* <Card variant="outlined" className={`max-w-[400px] p-8 w-full`}>
             <div className="relative text-xl font-sofia-pro font-light">
               <div className={`flex gap-4 items-center transition-all ${lisaDuration} ${isLisaHidden && 'blur-xl opacity-0'}`}>
                 <Button onClick={() => { setIsLisaHidden(true); setLisaTimeout() }}>
@@ -90,40 +80,37 @@ function App() {
               </div>
             </div>
           </Card> */}
-            <Card variant="outlined" className="max-w-[400px] w-full p-8 relative" >
-              <div className="flex flex-col justify-center gap-6 items-center">
-                <div className="p-2">
-                  <div className="font-house-md text-5xl">House1</div>
-                  <div className="font-house-md text-xl mt-2 ml-1 [letter-spacing:-0.2em]">COUNTER</div>
-                </div>
-
-                <div className="inline-grid grid-cols-5 gap-1">
-                  {remainEvents(new Date(2024, 3, 28), episodes.episodes).map((day: any) =>
-                    <Button variant={!day.events.find((e: any) => e.no_intro) ? "plain" : "outlined"} className="static-btn group inline-block p-2 px-2 rounded-xl text-sm bg-gray-800 text-gray-300">
-                      {+day.date.getDate() + 1 <= 9 ? '0' + (day.date.getDate() - 1) : Number(day.date.getDate()) - 1}.{day.date.getMonth() + 1 <= 9 ? `0${day.date.getMonth() + 1}` : day.date.getMonth() + 1}
-                      <div className="absolute left-0 top-full pointer-events-none z-50">
-                        <Card className="shadow-lg w-[300px] bg-gray-800 translate-y-2 opacity-0 group-hover:opacity-100 flex flex-col transition-all duration-300">
-                          {day.events.map((event: any) =>
-                            <div key={JSON.stringify(event)}>
-                              <div className="flex justify-between"><span>{event.name}</span> <span className="text-gray-400">{event.season}.{event.episode_number}</span> </div>
-                              <span className="text-gray-400 text-left text-xs block w-full">{event.date}</span>
-                              {event.no_intro && <span className="text-gray-400 text-left text-xs block w-full">В серии упрощенная заставка</span>}
-                            </div>
-                          )}
-                        </Card>
-                      </div>
-                    </Button>)}
-                </div>
+          <Card variant="outlined" className="max-w-[400px] w-full p-8 relative" >
+            <div className="flex flex-col justify-center gap-6 items-center">
+              <div className="p-2">
+                <div className="font-house-md text-5xl">House1</div>
+                <div className="font-house-md text-xl mt-2 ml-1 [letter-spacing:-0.2em]">COUNTER</div>
               </div>
 
-            </Card>
-          </div>
-        </CssVarsProvider >
-      </div >
-    )
-  else {
-    return <>File does not exists</>
-  }
+              <div className="inline-grid grid-cols-5 gap-1">
+                {remainEvents(new Date(2024, 3, 27), house.episodes).map((day: any) =>
+                  <Button variant={!day.events.find((e: any) => e.no_intro) ? "plain" : "outlined"} className="static-btn group inline-block p-2 px-2 rounded-xl text-sm bg-gray-800 text-gray-300">
+                    {+day.date.getDate() + 1 <= 9 ? '0' + (day.date.getDate() - 1) : Number(day.date.getDate()) - 1}.{day.date.getMonth() + 1 <= 9 ? `0${day.date.getMonth() + 1}` : day.date.getMonth() + 1}
+                    <div className="absolute left-0 top-full pointer-events-none z-50">
+                      <Card className="w-[400px] bg-gray-800 translate-y-2 opacity-0 group-hover:opacity-100 flex flex-col transition-all duration-300">
+                        {day.events.map((event: any) =>
+                          <div key={JSON.stringify(event)}>
+                            <div className="flex justify-between"><span>{event.name}</span> <span className="text-gray-400">{event.season}.{event.episode_number}</span> </div>
+                            <span className="text-gray-400 text-left text-xs block w-full">{event.date}</span>
+                            {event.no_intro && <span className="text-gray-400 text-left text-xs block w-full">В серии упрощенная заставка</span>}
+                          </div>
+                        )}
+                      </Card>
+                    </div>
+                  </Button>)}
+              </div>
+            </div>
+
+          </Card>
+        </div>
+      </CssVarsProvider >
+    </div >
+  )
 }
 
 export default App
