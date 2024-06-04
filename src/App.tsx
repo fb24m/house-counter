@@ -30,60 +30,93 @@ function remainEvents<T,>(startDate: Date, events: Array<T>) {
 function App() {
   const [isPjFirst, setIsPjFirst] = useState(true)
 
-  // const [isLisaHidden, setIsLisaHidden] = useState(false)
-  // const [lisaTimer, setLisaTimer] = useState('5')
-  // const [lisaDuration, setLisaDuration] = useState('duration-700')
+  const [isLisaHidden, setIsLisaHidden] = useState(false)
+  const [lisaTimer, setLisaTimer] = useState('5')
 
-  // const setLisaTimeout = () => {
-  //   setLisaTimer('5')
-  //   setTimeout(() => {
-  //     setIsLisaHidden(false)
-  //   }, 5000)
-  //   setTimeout(() => {
-  //     setLisaTimer('4')
-  //   }, 1000)
-  //   setTimeout(() => {
-  //     setLisaTimer('3')
-  //   }, 2000)
-  //   setTimeout(() => {
-  //     setLisaTimer('2')
-  //   }, 3000)
-  //   setTimeout(() => {
-  //     setLisaTimer('1')
-  //   }, 4000)
-  // }
+  const setLisaTimeout = () => {
+    setLisaTimer('5')
+    setTimeout(() => {
+      setIsLisaHidden(false)
+    }, 5000)
+    setTimeout(() => {
+      setLisaTimer('4')
+    }, 1000)
+    setTimeout(() => {
+      setLisaTimer('3')
+    }, 2000)
+    setTimeout(() => {
+      setLisaTimer('2')
+    }, 3000)
+    setTimeout(() => {
+      setLisaTimer('1')
+    }, 4000)
+  }
+
+  const [endDate] = useState(new Date(2024, 5, 7))
+  const [isEightSeason] = useState(Number(endDate) - Number(new Date()) <= 0)
+  const [isNewIntroDate] = useState(Number(new Date(2024, 5, 9)) - Number(new Date()) <= 0)
+
+  const [isHouseFree, setIsHouseFree] = useState(false)
+
+  const jailHouse = false
+
   return (
     <div className="bg-[#17212b]">
       <CssVarsProvider defaultMode="dark" defaultColorScheme="dark" modeStorageKey="dark">
         <div className="flex items-center flex-col gap-4 bg-opacity-50 py-4 h-[100vh]">
-          <Card variant="outlined" className="max-w-[360px] p-8 w-full">
-            <div className="flex gap-4 items-center justify-center text-lg font-sofia-pro font-light">
-              <span>{isPjFirst ? 'Peter Jacobson' : 'Jesse Spencer'}</span>
-              <Button onClick={() => { setIsPjFirst(!isPjFirst) }}>
-                <span className="material-symbols-outlined">swap_horiz</span>
-              </Button>
-              <span>{isPjFirst ? 'Jesse Spencer' : 'Peter Jacobson'}</span>
-            </div>
-          </Card>
-          {/* <Card variant="outlined" className={`max-w-[400px] p-8 w-full`}>
-            <div className="relative text-xl font-sofia-pro font-light">
-              <div className={`flex gap-4 items-center transition-all ${lisaDuration} ${isLisaHidden && 'blur-xl opacity-0'}`}>
-                <Button onClick={() => { setIsLisaHidden(true); setLisaTimeout() }}>
-                  <span className="material-symbols-outlined">close</span>
+          {jailHouse &&
+            <Card variant="outlined" className="max-w-[360px] relative overflow-hidden h-[240px] w-full" onClick={() => setIsHouseFree(true)}>
+              <img className={`absolute left-0 top-0 bottom-0 right-0 object-cover w-full h-full`} src={!isHouseFree ? "/de4cc1a185152b54daf30bd044173ce20c377a853098ad4542da1d1eaad867b6._SX1080_FMjpg_.jpg" : "/free-house.png"} alt="" />
+              <img className={`absolute left-0 top-0 bottom-0 right-0 object-cover w-full h-full transition-transform duration-500 ${isHouseFree && 'translate-y-full'}`} src="/pngtree-jail-prison-bars-vector-png-image_6665843.png" alt="" />
+              <img className={`absolute left-0 top-0 bottom-0 right-0 object-cover w-full h-full transition-transform duration-500 ${isHouseFree && '-translate-y-full'}`} src="/pngtree-jail-prison-bars-vector-png-image_6665843.png" alt="" />
+            </Card>
+          }
+          {isNewIntroDate &&
+            <Card variant="outlined" className="max-w-[360px] relative h-[160px] p-8 w-full">
+              <div className="font-house-md text-5xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 house-letter">
+                H
+              </div>
+              <div className="font-house-md text-5xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 house-word">
+                House<span className="house-sub">1</span>
+              </div>
+              <div className="font-house-md absolute bottom-4 left-1/2 -translate-x-1/2 text-xl mt-2 ml-1 [letter-spacing:-0.2em] house-sub">COUNTER</div>
+            </Card>
+          }
+
+          {!isEightSeason ?
+            <Card variant="outlined" className="max-w-[360px] p-8 w-full">
+              <div className="flex gap-4 items-center justify-center text-lg font-sofia-pro font-light">
+                <span>{isPjFirst ? 'Peter Jacobson' : 'Jesse Spencer'}</span>
+                <Button onClick={() => { setIsPjFirst(!isPjFirst) }}>
+                  <span className="material-symbols-outlined">swap_horiz</span>
                 </Button>
-                <span className="block w-full">Lisa Edelstein</span>
+                <span>{isPjFirst ? 'Jesse Spencer' : 'Peter Jacobson'}</span>
               </div>
-              <div className={`absolute w-full left-1/2 text-center top-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-700 ${isLisaHidden ? 'opacity-1' : 'opacity-0 pointer-events-none'}`}>
-                {lisaTimer}
+            </Card>
+            : !isNewIntroDate && <Card variant="outlined" className={`max-w-[360px] p-8 w-full`}>
+              <div className="relative text-xl font-sofia-pro font-light">
+                <div className={`flex gap-4 items-center transition-all duration-700 ${isLisaHidden && 'blur-xl opacity-0'}`}>
+                  <Button onClick={() => { setIsLisaHidden(true); setLisaTimeout() }}>
+                    <span className="material-symbols-outlined">close</span>
+                  </Button>
+                  <span className="block w-full">Lisa Edelstein</span>
+                </div>
+                <div className={`absolute w-full left-1/2 text-center top-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-700 ${isLisaHidden ? 'opacity-1' : 'opacity-0 pointer-events-none'}`}>
+                  {lisaTimer}
+                </div>
               </div>
-            </div>
-          </Card> */}
+            </Card>}
           <Card variant="outlined" className="max-w-[360px] w-full p-4 relative" >
             <div className="flex flex-col justify-center gap-6 items-center">
-              <div className="p-2">
-                <div className="font-house-md text-5xl">House1</div>
-                <div className="font-house-md text-xl mt-2 ml-1 [letter-spacing:-0.2em]">COUNTER</div>
-              </div>
+              {!isNewIntroDate &&
+                <div className="p-2">
+                  {(!isEightSeason || isNewIntroDate) ?
+                    <div className="font-house-md text-5xl">House1</div>
+                    : <div className="text-5xl tracking-widest">HOUSE</div>
+                  }
+                  <div className="font-house-md text-xl mt-2 ml-1 [letter-spacing:-0.2em]">COUNTER</div>
+                </div>
+              }
 
               <div className="inline-grid grid-cols-5 gap-1">
                 {remainEvents(new Date(2024, 3, 27), house.episodes).map((day: any) =>

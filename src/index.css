@@ -29,3 +29,65 @@
 .MuiCard-root {
   background-color: transparent !important;
 }
+
+.house-letter {
+  animation-name: houseLetter;
+  animation-duration: 2s;
+  animation-delay: 1s;
+  opacity: 0;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes houseLetter {
+  0% {
+    opacity: 0;
+    filter: blur(0);
+  }
+  25% {
+    opacity: 100%;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0%;
+    filter: blur(20px);
+  }
+}
+
+.house-word {
+  animation-name: houseWord;
+  animation-duration: 1s;
+  animation-delay: 2s;
+  opacity: 0;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes houseWord {
+  0% {
+    opacity: 0%;
+    filter: blur(20px);
+  }
+  100% {
+    opacity: 100%;
+    filter: blur(0);
+  }
+}
+
+.house-sub {
+  animation-name: houseMd;
+  animation-duration: 0.5s;
+  animation-delay: 3s;
+  opacity: 0;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes houseMd {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
