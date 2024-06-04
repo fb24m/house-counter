@@ -55,7 +55,7 @@ function App() {
   return (
     <div className="bg-[#17212b]">
       <CssVarsProvider defaultMode="dark" defaultColorScheme="dark" modeStorageKey="dark">
-        <div className="flex items-center flex-col gap-4 bg-opacity-50 p-20 h-[100vh]">
+        <div className="flex items-center flex-col gap-4 bg-opacity-50 py-20 h-[100vh]">
           <Card variant="outlined" className="max-w-[400px] p-8 w-full">
             <div className="flex gap-4 items-center justify-center text-xl font-sofia-pro font-light">
               <span>{isPjFirst ? 'Peter Jacobson' : 'Jesse Spencer'}</span>
