@@ -55,7 +55,7 @@ function App() {
   return (
     <div className="bg-[#17212b]">
       <CssVarsProvider defaultMode="dark" defaultColorScheme="dark" modeStorageKey="dark">
-        <div className="flex items-center flex-col gap-4 bg-opacity-50 py-20 h-[100vh]">
+        <div className="flex items-center flex-col gap-4 bg-opacity-50 py-4 h-[100vh]">
           <Card variant="outlined" className="max-w-[360px] p-8 w-full">
             <div className="flex gap-4 items-center justify-center text-lg font-sofia-pro font-light">
               <span>{isPjFirst ? 'Peter Jacobson' : 'Jesse Spencer'}</span>
@@ -78,7 +78,7 @@ function App() {
               </div>
             </div>
           </Card> */}
-          <Card variant="outlined" className="max-w-[360px] w-full p-8 relative" >
+          <Card variant="outlined" className="max-w-[360px] w-full p-4 relative" >
             <div className="flex flex-col justify-center gap-6 items-center">
               <div className="p-2">
                 <div className="font-house-md text-5xl">House1</div>
@@ -90,7 +90,7 @@ function App() {
                   <Button variant={!day.events.find((e: any) => e.no_intro) ? "plain" : "outlined"} className="static-btn group inline-block p-2 px-2 rounded-xl text-sm bg-gray-800 text-gray-300">
                     {+day.date.getDate() + 1 <= 9 ? '0' + (day.date.getDate() - 1) : Number(day.date.getDate()) - 1}.{day.date.getMonth() + 1 <= 9 ? `0${day.date.getMonth() + 1}` : day.date.getMonth() + 1}
                     <div className="absolute left-0 top-full pointer-events-none z-50">
-                      <Card className="w-[360px] bg-gray-800 translate-y-2 opacity-0 group-hover:opacity-100 flex flex-col transition-all duration-300">
+                      <Card className="w-[360px] bg-gray-800 translate-y-4 opacity-0 group-hover:opacity-100 flex flex-col transition-all duration-300">
                         {day.events.map((event: any) =>
                           <div key={JSON.stringify(event)}>
                             <div className="flex justify-between"><span>{event.name}</span> <span className="text-gray-400">{event.season}.{event.episode_number}</span> </div>
