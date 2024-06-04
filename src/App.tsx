@@ -30,8 +30,6 @@ function remainEvents<T,>(startDate: Date, events: Array<T>) {
 function App() {
   const [isPjFirst, setIsPjFirst] = useState(true)
 
-  const params = new URLSearchParams(location.search)
-
   // const [isLisaHidden, setIsLisaHidden] = useState(false)
   // const [lisaTimer, setLisaTimer] = useState('5')
   // const [lisaDuration, setLisaDuration] = useState('duration-700')
