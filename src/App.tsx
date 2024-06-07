@@ -28,20 +28,20 @@ function remainEvents<T,>(startDate: Date, events: Array<T>) {
 }
 
 function App() {
-  const [isPjFirst, setIsPjFirst] = useState(true)
+  // const [isPjFirst, setIsPjFirst] = useState(true)
 
-  const [isLisaHidden, setIsLisaHidden] = useState(false)
-  const [lisaCar, setLisaCar] = useState(<></>)
-  const [lisaTimer] = useState('')
+  // const [isLisaHidden, setIsLisaHidden] = useState(false)
+  // const [lisaCar, setLisaCar] = useState(<></>)
+  // const [lisaTimer] = useState('')
 
-  const hideLisa = () => {
-    setLisaCar(<img className="lisa-car" src="/Vintage_blue_car.png" />)
+  // const hideLisa = () => {
+  //   setLisaCar(<img className="lisa-car" src="/Vintage_blue_car.png" />)
 
-    setTimeout(() => {
-      setIsLisaHidden(true)
-      setLisaCar(<></>)
-    }, 5000)
-  }
+  //   setTimeout(() => {
+  //     setIsLisaHidden(true)
+  //     setLisaCar(<></>)
+  //   }, 5000)
+  // }
 
   const [endDate] = useState(new Date(2023, 5, 7))
   const [isEightSeason] = useState(Number(endDate) - Number(new Date()) <= 0)
@@ -55,7 +55,7 @@ function App() {
     <div className="bg-[#17212b]">
       <CssVarsProvider defaultMode="dark" defaultColorScheme="dark" modeStorageKey="dark">
         <div className="flex items-center flex-col gap-4 bg-opacity-50 py-4 h-[100vh]">
-          {lisaCar}
+          {/* {lisaCar} */}
           {jailHouse &&
             <Card variant="outlined" className="max-w-[360px] relative overflow-hidden h-[240px] w-full" onClick={() => setIsHouseFree(true)}>
               <img className={`absolute left-0 top-0 bottom-0 right-0 object-cover w-full h-full`} src={!isHouseFree ? "/de4cc1a185152b54daf30bd044173ce20c377a853098ad4542da1d1eaad867b6._SX1080_FMjpg_.jpg" : "/free-house.png"} alt="" />
