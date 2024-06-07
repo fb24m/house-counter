@@ -43,13 +43,13 @@ function App() {
     }, 5000)
   }
 
-  const [endDate] = useState(new Date(2024, 5, 7))
+  const [endDate] = useState(new Date(2023, 5, 7))
   const [isEightSeason] = useState(Number(endDate) - Number(new Date()) <= 0)
   const [isNewIntroDate] = useState(Number(new Date(2024, 5, 9)) - Number(new Date()) <= 0)
 
   const [isHouseFree, setIsHouseFree] = useState(false)
 
-  const jailHouse = false
+  const jailHouse = true
 
   return (
     <div className="bg-[#17212b]">
@@ -75,7 +75,7 @@ function App() {
             </Card>
           }
 
-          {!isEightSeason ?
+          {/* {!isEightSeason ?
             <Card variant="outlined" className="max-w-[360px] p-8 w-full">
               <div className="flex gap-4 items-center justify-center text-lg font-sofia-pro font-light">
                 <span>{isPjFirst ? 'Peter Jacobson' : 'Jesse Spencer'}</span>
@@ -97,7 +97,7 @@ function App() {
                   {lisaTimer}
                 </div>
               </div>
-            </Card>}
+            </Card>} */}
           <Card variant="outlined" className="max-w-[360px] w-full p-4 relative" >
             <div className="flex flex-col justify-center gap-6 items-center">
               {!isNewIntroDate &&
