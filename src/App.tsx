@@ -49,14 +49,14 @@ function App() {
 
   const [isHouseFree, setIsHouseFree] = useState(false)
 
-  const jailHouse = true
+  const [jailHouse] = useState(Number(new Date(2024, 5, 8)) - Number(new Date()) <= 0)
 
   return (
     <div className="bg-[#17212b]">
       <CssVarsProvider defaultMode="dark" defaultColorScheme="dark" modeStorageKey="dark">
         <div className="flex items-center flex-col gap-4 bg-opacity-50 py-4 h-[100vh]">
           {/* {lisaCar} */}
-          {jailHouse &&
+          {jailHouse && !isNewIntroDate &&
             <Card variant="outlined" className="max-w-[360px] relative overflow-hidden h-[240px] w-full" onClick={() => setIsHouseFree(true)}>
               <img className={`absolute left-0 top-0 bottom-0 right-0 object-cover w-full h-full`} src={!isHouseFree ? "/de4cc1a185152b54daf30bd044173ce20c377a853098ad4542da1d1eaad867b6._SX1080_FMjpg_.jpg" : "/free-house.png"} alt="" />
               <img className={`absolute left-0 top-0 bottom-0 right-0 object-cover w-full h-full transition-transform duration-500 ${isHouseFree && 'translate-y-full'}`} src="/pngtree-jail-prison-bars-vector-png-image_6665843.png" alt="" />
