@@ -46,7 +46,7 @@ const EventCard = (day: any) => {
   )
 }
 
-function App() {
+() => {
   return (
     <div className="bg-[#17212b]">
       <CssVarsProvider defaultMode="dark" defaultColorScheme="dark" modeStorageKey="dark">
@@ -74,6 +74,12 @@ function App() {
         </div>
       </CssVarsProvider >
     </div >
+  )
+}
+
+function App() {
+  return (
+    <iframe className="w-full h-[100vh] object-cover" width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
   )
 }
 
