@@ -6,21 +6,19 @@ function remainEvents<T,>(startDate: Date, events: Array<T>) {
   const today = new Date() // Текущая дата
   const result: any = []
 
-  // Предполагаем, что каждый день происходит два события
-  const eventsPerDay = 2;
+  const eventsPerDay = 2
 
-  // Рассчитываем даты для каждого события, начиная с startDate
   events.forEach((event, index) => {
-    const daysToAdd = Math.floor(index / eventsPerDay); // Количество полных дней, прошедших с начальной даты
+    const daysToAdd = Math.floor(index / eventsPerDay)
     const eventDate = new Date(startDate);
-    eventDate.setDate(startDate.getDate() + daysToAdd); // Установка рассчитанной даты события
+    eventDate.setDate(startDate.getDate() + daysToAdd)
 
     if (eventDate >= today) {
-      const currentDayIndex = Math.floor(index / eventsPerDay); // Индекс дня (каждый день два события)
+      const currentDayIndex = Math.floor(index / eventsPerDay)
       if (!result[currentDayIndex]) {
-        result[currentDayIndex] = { date: eventDate, events: [] };
+        result[currentDayIndex] = { date: eventDate, events: [] }
       }
-      result[currentDayIndex].events.push(event);
+      result[currentDayIndex].events.push(event)
     }
   });
 
@@ -113,6 +111,12 @@ function App() {
         </div>
       </CssVarsProvider >
     </div >
+  )
+}
+
+function App() {
+  return (
+    <iframe className="w-full h-[100vh] object-cover" width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
   )
 }
 
