@@ -1,6 +1,6 @@
 import { Button, Card, CssVarsProvider } from '@mui/joy'
-import house from './house.json'
-import { useState } from 'react'
+import house from './battle_creek.json'
+import { useEffect, useState } from 'react'
 
 function remainEvents<T,>(startDate: Date, events: Array<T>) {
   const today = new Date() // Текущая дата
@@ -28,90 +28,70 @@ function remainEvents<T,>(startDate: Date, events: Array<T>) {
 }
 
 function App() {
-  const [isPjFirst, setIsPjFirst] = useState(true)
+  const starringList = ['BattleCreek', 'Josh Duamel', 'Dean Winters', 'Aubrey Dollar', 'Edward Fordham', 'Kal Penn', 'Janet McTeer', 'Vince Gilligan']
+  const [isPjFirst, setIsPjFirst] = useState(false)
+  const [currentStar, setCurrentStar] = useState(0)
 
-  const [isLisaHidden, setIsLisaHidden] = useState(false)
-  const [lisaCar, setLisaCar] = useState(<></>)
-  const [lisaTimer] = useState('')
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (currentStar < starringList.length) {
+        setCurrentStar(currentStar + 1)
+      }
+      else {
+        setCurrentStar(0)
+      }
+    }, 3000)
 
-  const hideLisa = () => {
-    setLisaCar(<img className="lisa-car" src="/Vintage_blue_car.png" />)
-
-    setTimeout(() => {
-      setIsLisaHidden(true)
-      setLisaCar(<></>)
-    }, 5000)
-  }
-
-  const [endDate] = useState(new Date(2024, 5, 7))
-  const [isEightSeason] = useState(Number(endDate) - Number(new Date()) <= 0)
-  const [isNewIntroDate] = useState(Number(new Date(2024, 5, 9)) - Number(new Date()) <= 0)
-
-  const [isHouseFree, setIsHouseFree] = useState(false)
-
-  const jailHouse = false
+    return () => {
+      clearInterval(interval)
+    }
+  }, [currentStar])
 
   return (
     <div className="bg-[#17212b]">
       <CssVarsProvider defaultMode="dark" defaultColorScheme="dark" modeStorageKey="dark">
         <div className="flex items-center flex-col gap-4 bg-opacity-50 py-4 h-[100vh]">
-          {lisaCar}
-          {jailHouse &&
-            <Card variant="outlined" className="max-w-[360px] relative overflow-hidden h-[240px] w-full" onClick={() => setIsHouseFree(true)}>
-              <img className={`absolute left-0 top-0 bottom-0 right-0 object-cover w-full h-full`} src={!isHouseFree ? "/de4cc1a185152b54daf30bd044173ce20c377a853098ad4542da1d1eaad867b6._SX1080_FMjpg_.jpg" : "/free-house.png"} alt="" />
-              <img className={`absolute left-0 top-0 bottom-0 right-0 object-cover w-full h-full transition-transform duration-500 ${isHouseFree && 'translate-y-full'}`} src="/pngtree-jail-prison-bars-vector-png-image_6665843.png" alt="" />
-              <img className={`absolute left-0 top-0 bottom-0 right-0 object-cover w-full h-full transition-transform duration-500 ${isHouseFree && '-translate-y-full'}`} src="/pngtree-jail-prison-bars-vector-png-image_6665843.png" alt="" />
-            </Card>
-          }
-          {isNewIntroDate &&
-            <Card variant="outlined" className="max-w-[360px] relative h-[160px] p-8 w-full">
-              <div className="font-house-md text-5xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 house-letter">
-                H
-              </div>
-              <div className="font-house-md text-5xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 house-word">
-                House<span className="house-sub">1</span>
-              </div>
-              <div className="font-house-md absolute bottom-4 left-1/2 -translate-x-1/2 text-xl mt-2 ml-1 [letter-spacing:-0.2em] house-sub">COUNTER</div>
-            </Card>
-          }
+          <Card variant="outlined" className="max-w-[360px] relative h-[160px] p-8 w-full">
+            {starringList.map((item, i) => <div key={i} className={`duration-500 ${i !== currentStar ? 'opacity-0' : 'opacity-100'}`}>
+              <span className="absolute top-8 left-1/2 -translate-x-1/2 uppercase [letter-spacing:0.1em] font-bold">
+                {i === 1 && 'starring'}
+                {i === starringList.length - 3 && 'with'}
+                {i === starringList.length - 2 && 'and'}
+                {i === starringList.length - 1 && 'created by'}
+              </span>
+              <h2
+                className={`duration-500 transition-all font-house-md text-2xl absolute top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap 
+                ${i === currentStar ? 'left-1/2' : i > currentStar ? 'left-[45%]' : 'left-[55%]'}
+                `}
+              >
+                {item}
+              </h2>
+              {currentStar === 0 &&
+                <span className="font-house-md [letter-spacing:-0.2em] absolute bottom-8 left-1/2 -translate-x-1/2">
+                  COUNTER
+                </span>
+              }
+              <span className="absolute bottom-2 text-gray-500 left-1/2 -translate-x-1/2">
+                {i === starringList.length - 1 && 'and David Shore'}
+              </span>
+            </div>
+            )}
+          </Card>
 
-          {!isEightSeason ?
-            <Card variant="outlined" className="max-w-[360px] p-8 w-full">
-              <div className="flex gap-4 items-center justify-center text-lg font-sofia-pro font-light">
-                <span>{isPjFirst ? 'Peter Jacobson' : 'Jesse Spencer'}</span>
-                <Button onClick={() => { setIsPjFirst(!isPjFirst) }}>
-                  <span className="material-symbols-outlined">swap_horiz</span>
-                </Button>
-                <span>{isPjFirst ? 'Jesse Spencer' : 'Peter Jacobson'}</span>
-              </div>
-            </Card>
-            : !isNewIntroDate && <Card variant="outlined" className={`max-w-[360px] p-8 w-full`}>
-              <div className="relative text-xl font-sofia-pro font-light">
-                <div className={`flex gap-4 items-center transition-all duration-700 ${isLisaHidden && 'blur-xl opacity-0'}`}>
-                  <Button onClick={() => { hideLisa() }}>
-                    <span className="material-symbols-outlined">close</span>
-                  </Button>
-                  <span className="block w-full">Lisa Edelstein</span>
-                </div>
-                <div className={`absolute w-full left-1/2 text-center top-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-700 ${isLisaHidden ? 'opacity-1' : 'opacity-0 pointer-events-none'}`}>
-                  {lisaTimer}
-                </div>
-              </div>
-            </Card>}
+          <Card variant="outlined" className="max-w-[360px] p-8 w-full">
+            <div className="flex gap-4 items-center justify-center text-lg font-sofia-pro font-light">
+              <span>{isPjFirst ? 'Commissioner Dave' : 'Vince Gilligan'}</span>
+              <Button onClick={() => { setIsPjFirst(!isPjFirst) }}>
+                <span className="material-symbols-outlined">swap_horiz</span>
+              </Button>
+              <span>{isPjFirst ? 'Kavinsky' : 'David Shore'}</span>
+            </div>
+          </Card>
+
           <Card variant="outlined" className="max-w-[360px] w-full p-4 relative" >
             <div className="flex flex-col justify-center gap-6 items-center">
-              {!isNewIntroDate &&
-                <div className="p-2">
-                  {(!isEightSeason || isNewIntroDate) ?
-                    <div className="font-house-md text-5xl">House1</div>
-                    : <div className="text-5xl tracking-widest">HOUSE</div>
-                  }
-                  <div className="font-house-md text-xl mt-2 ml-1 [letter-spacing:-0.2em]">COUNTER</div>
-                </div>
-              }
-
               <div className="inline-grid grid-cols-5 gap-1">
-                {remainEvents(new Date(2024, 3, 27), house.episodes).map((day: any) =>
+                {remainEvents(new Date(2024, 10, 2), house.episodes).map((day: any) =>
                   <Button variant={!day.events.find((e: any) => e.no_intro) ? "plain" : "outlined"} className="static-btn group inline-block p-2 px-2 rounded-xl text-sm bg-gray-800 text-gray-300">
                     {+day.date.getDate() + 1 <= 9 ? '0' + (day.date.getDate() - 1) : Number(day.date.getDate()) - 1}.{day.date.getMonth() + 1 <= 9 ? `0${day.date.getMonth() + 1}` : day.date.getMonth() + 1}
                     <div className="absolute left-0 top-full pointer-events-none z-50">

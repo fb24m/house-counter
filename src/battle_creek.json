@@ -1,0 +1,88 @@
+{
+  "episodes": [
+    {
+      "episode_number": 22,
+      "season": 8,
+      "date": "12 июня 2012",
+      "name": "Все умрут"
+    },
+    {
+      "episode_number": 1,
+      "season": 1,
+      "date": "1 марта 2015",
+      "name": "Метод Батл Крика"
+    },
+    {
+      "episode_number": 2,
+      "season": 1,
+      "date": "8 марта 2015",
+      "name": "Липкое дело"
+    },
+    {
+      "episode_number": 3,
+      "season": 1,
+      "date": "15 марта 2015",
+      "name": "Лучший друг человека"
+    },
+    {
+      "episode_number": 4,
+      "season": 1,
+      "date": "22 марта 2015",
+      "name": "Фамильные ценности"
+    },
+    {
+      "episode_number": 5,
+      "season": 1,
+      "date": "29 марта 2015",
+      "name": "Былое пламя"
+    },
+    {
+      "episode_number": 6,
+      "season": 1,
+      "date": "5 апреля 2015",
+      "name": "Убийство на завтрак"
+    },
+    {
+      "episode_number": 7,
+      "season": 1,
+      "date": "12 апреля 2015",
+      "name": "Мамин сын"
+    },
+    {
+      "episode_number": 8,
+      "season": 1,
+      "date": "26 апреля 2015",
+      "name": "Старые раны"
+    },
+    {
+      "episode_number": 9,
+      "season": 1,
+      "date": "3 мая 2015",
+      "name": "Пряничный человечек"
+    },
+    {
+      "episode_number": 10,
+      "season": 1,
+      "date": "10 мая 2015",
+      "name": "Стокгольмский синдром"
+    },
+    {
+      "episode_number": 11,
+      "season": 1,
+      "date": "17 мая 2015",
+      "name": "Пас"
+    },
+    {
+      "episode_number": 12,
+      "season": 1,
+      "date": "17 мая 2015",
+      "name": "Встреча выпускников"
+    },
+    {
+      "episode_number": 13,
+      "season": 1,
+      "date": "24 мая 2015",
+      "name": "Сочувствие дьяволу"
+    }
+  ]
+}

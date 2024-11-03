@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'sofia-pro': ['Sofia Pro', 'sans-serif']
+        'sofia-pro': ['Sofia Pro', 'sans-serif'],
+        'house-md': ['House MD', 'sans-serif'],
       }
     },
   },
